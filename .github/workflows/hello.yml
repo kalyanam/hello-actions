@@ -1,12 +1,27 @@
 name: Hello World
-on: [push]
+# on: [push]
+
+# jobs:
+#   say-hello:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+
+#       - name: Say Hello
+#         run: echo "Hello, World from GitHub Actions"
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Who to greet"
+        required: true
+        default: "World"
 
 jobs:
-    say-hello:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v4
-
-        - name: Say Hello
-          run: echo "Hello, World from GitHub Actions"
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "Hello, ${{ github.event.inputs.name }} from GitHub Actions"
