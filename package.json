@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "echo 'Pretend build step done ✅'"
+    "build": "mkdir -p dist && cp -r public/* dist/"
   },
   "repository": {
     "type": "git",
